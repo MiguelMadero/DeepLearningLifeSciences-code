@@ -31,6 +31,8 @@ keras_model = tf.keras.Model(inputs=features, outputs=[output, logits])
 loss = dc.models.losses.SigmoidCrossEntropy()
 # Why is it that loss doesn't need to know the structure of my in_layers anymore.
 # loss = layers.SigmoidCrossEntropy(in_layers=[labels, logits])
+# That's because we specify it below as output_types loss and above as outputs=[_,logits]
+# Not sure about labels...
 model = dc.models.KerasModel(
     keras_model,
     loss=loss,
